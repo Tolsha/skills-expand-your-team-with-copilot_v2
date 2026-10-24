@@ -32,6 +32,23 @@
   --info-light: #d1ecf1;
 }
 
+body.dark-mode {
+  --primary: #3949ab;
+  --primary-light: #90caf9;
+  --primary-dark: #202b6b;
+  --background: #121212;
+  --surface: #1e1e1e;
+  --text-primary: #eeeeee;
+  --text-secondary: #b0b0b0;
+  --border: #424242;
+  --border-light: #333333;
+  --border-focus: #616161;
+  --success-light: #1b3a20;
+  --warning-light: #4a3510;
+  --error-light: #4a1b1b;
+  --info-light: #12383d;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -595,6 +612,15 @@ footer {
 
 /* Responsive adjustments for mobile */
 @media (max-width: 767px) {
+  header {
+    padding-top: 48px;
+  }
+
+  #user-controls {
+    top: 8px;
+    right: 8px;
+  }
+
   .sidebar-filters {
     margin-bottom: 15px;
   }
@@ -617,6 +643,9 @@ footer {
   position: absolute;
   top: 10px;
   right: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 #user-status {
@@ -648,6 +677,18 @@ footer {
 
 .icon-button:hover {
   background-color: rgba(255, 255, 255, 0.3);
+}
+
+body.dark-mode section h3,
+body.dark-mode .sidebar-filters h3,
+body.dark-mode .activity-card h4,
+body.dark-mode .participants-list h5 {
+  color: var(--primary-light);
+}
+
+input {
+  background-color: var(--surface);
+  color: var(--text-primary);
 }
 
 .user-icon {
