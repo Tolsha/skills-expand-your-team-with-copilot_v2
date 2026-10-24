@@ -7,6 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const signupForm = document.getElementById("signup-form");
   const activityInput = document.getElementById("activity");
   const closeRegistrationModal = document.querySelector(".close-modal");
+  const themeToggle = document.getElementById("theme-toggle");
+  const themeToggleIcon = document.getElementById("theme-toggle-icon");
+  const themeToggleLabel = document.getElementById("theme-toggle-label");
 
   // Search and filter elements
   const searchInput = document.getElementById("activity-search");
@@ -43,6 +46,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Authentication state
   let currentUser = null;
+
+  function setTheme(isDark) {
+    document.body.classList.toggle("dark-mode", isDark);
+    themeToggle.setAttribute("aria-pressed", String(isDark));
+    themeToggle.setAttribute(
+      "aria-label",
+      `Switch to ${isDark ? "light" : "dark"} mode`
+    );
+    themeToggleIcon.textContent = isDark ? "☀️" : "🌙";
+    themeToggleLabel.textContent = isDark ? "Light mode" : "Dark mode";
+  }
+
+  setTheme(localStorage.getItem("colorTheme") === "dark");
+  themeToggle.addEventListener("click", () => {
+    const isDark = !document.body.classList.contains("dark-mode");
+    setTheme(isDark);
+    localStorage.setItem("colorTheme", isDark ? "dark" : "light");
+  });
 
   // Time range mappings for the dropdown
   const timeRanges = {
